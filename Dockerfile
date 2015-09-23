@@ -10,7 +10,7 @@ RUN apt-get update && \
     mvn -file WebGoat/pom.xml clean compile install && \
     mvn -file WebGoat-Lessons/pom.xml package && \
     cp -fa ./WebGoat-Lessons/target/plugins/*.jar ./WebGoat/webgoat-container/src/main/webapp/plugin_lessons/ && \
-    echo "#\!/bin/sh" > /run-webgoat
+    echo '#!/bin/sh' > /run-webgoat && \
     echo "mvn -file WebGoat/pom.xml -pl webgoat-container tomcat7:run-war &> webgoat_developer_bootstrap.log" >> /run-webgoat && \
     chmod +x /run-webgoat
 
